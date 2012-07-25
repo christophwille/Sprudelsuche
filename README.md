@@ -17,7 +17,7 @@ Die Installation erfolgt über den Store.
 Bitte diesen [Fehler melden](https://github.com/christophwille/Sprudelsuche/issues/new) damit er nachverfolgt werden kann.
 
 ## Credits and Acknowledgements
-* [Christoph Wille](christoph.wille@gmail.com) - concept and initial implementation.
+* [Christoph Wille](mailto:christoph.wille@gmail.com) - concept and initial implementation.
 
 ### Services Used
 * Geocoding is performed via [Nominatim Search](http://open.mapquestapi.com/nominatim/)
