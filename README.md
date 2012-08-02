@@ -15,9 +15,12 @@ Die Installation erfolgt über den Store.
 
 ## Ich habe einen Fehler gefunden
 Bitte diesen [Fehler melden](https://github.com/christophwille/Sprudelsuche/issues/new) damit er nachverfolgt werden kann.
+  
+Feedback (Wünsche, Anregungen, Beschwerden) bitte via [Uservoice](https://sprudelsuche.uservoice.com/)
 
 ## Credits and Acknowledgements
 * [Christoph Wille](mailto:christoph.wille@gmail.com) - concept and initial implementation.
+* [Wolfgang Hoffelner](http://www.wo-ho.at/) - logo design
 
 ### Services Used
 * Geocoding is performed via [Nominatim Search](http://open.mapquestapi.com/nominatim/)
