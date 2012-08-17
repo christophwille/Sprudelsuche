@@ -1,7 +1,8 @@
 # Sprudelsuche
 Windows 8 App zur Suche nach der günstigsten Tankstelle in Österreich.  
   
-Developer-centric information on license et al is provided at the end of the page in English.
+Developer-centric information on license et al is provided at the end of the page in English. There is a [quick tour](https://github.com/christophwille/Sprudelsuche/wiki/Developer-Quick-Tour)
+in the Wiki to get an overview of the project before digging into the code.
 
 ## Features
 
