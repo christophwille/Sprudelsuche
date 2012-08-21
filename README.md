@@ -19,6 +19,10 @@ Bitte diesen [Fehler melden](https://github.com/christophwille/Sprudelsuche/issu
   
 Feedback (Wünsche, Anregungen, Beschwerden) bitte via [Uservoice](https://sprudelsuche.uservoice.com/)
 
+## Developer Information
+
+"Sprudelsuche" (Austrian fuel prices search) is an open source Windows 8 app built with WinRT C#/XAML (formerly called Metro style).
+
 ## Credits and Acknowledgements
 * [Christoph Wille](mailto:christoph.wille@gmail.com) - concept and initial implementation.
 * [Wolfgang Hoffelner](http://www.wo-ho.at/) - logo design
