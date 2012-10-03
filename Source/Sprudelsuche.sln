@@ -14,30 +14,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprudelsuche.WinRT", "Sprudelsuche.WinRT\Sprudelsuche.WinRT.csproj", "{50FC75E0-E404-4609-A173-6DE34221A9E0}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccLocalPath0 = .
-		SccLocalPath1 = Sprudelsuche
-		SccLocalPath2 = SprudelSuche.ThirdParty
-		SccLocalPath3 = NotificationsExtensions
-		SccLocalPath4 = Sprudelsuche.Tasks
-		SccLocalPath5 = Sprudelsuche.Portable
-		SccLocalPath6 = Sprudelsuche.WinRT
-		SccNumberOfProjects = 7
-		SccProjectName1 = Sprudelsuche
-		SccProjectName2 = SprudelSuche.ThirdParty
-		SccProjectName3 = NotificationsExtensions
-		SccProjectName4 = Sprudelsuche.Tasks
-		SccProjectName5 = Sprudelsuche.Portable
-		SccProjectName6 = Sprudelsuche.WinRT
-		SccProjectUniqueName1 = Sprudelsuche\\Sprudelsuche.csproj
-		SccProjectUniqueName2 = SprudelSuche.ThirdParty\\SprudelSuche.ThirdParty.csproj
-		SccProjectUniqueName3 = NotificationsExtensions\\NotificationsExtensions.csproj
-		SccProjectUniqueName4 = Sprudelsuche.Tasks\\Sprudelsuche.Tasks.csproj
-		SccProjectUniqueName5 = Sprudelsuche.Portable\\Sprudelsuche.Portable.csproj
-		SccProjectUniqueName6 = Sprudelsuche.WinRT\\Sprudelsuche.WinRT.csproj
-		SccTeamFoundationServer = https://christophwille.tfspreview.com/defaultcollection
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
 		Debug|Any CPU = Debug|Any CPU
