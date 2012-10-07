@@ -39,6 +39,7 @@ namespace Sprudelsuche.WinRT.Proxies
             {
                 response = await client.PostAsync(URL, content);
                 json = await response.Content.ReadAsStringAsync();
+                client.Dispose();
 
                 result = JsonConvert.DeserializeObject<List<RootObject>>(json);
             }

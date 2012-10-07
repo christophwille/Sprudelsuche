@@ -27,8 +27,12 @@ namespace Sprudelsuche.WinRT.Proxies
                     query,
                     15);    // max. results to return, possibly make this configurable
 
-            var client = new HttpClient();
-            var response = await client.GetStringAsync(URL);
+            string response = "";
+            using (var client = new HttpClient())
+            {
+                response = await client.GetStringAsync(URL);
+                client.Dispose();
+            }
 
             var searchresults = XElement.Parse(response);
             var mapped = searchresults.Elements("place")
@@ -55,8 +59,12 @@ namespace Sprudelsuche.WinRT.Proxies
                     latitude.ToString(CultureInfo.InvariantCulture),
                     longitude.ToString(CultureInfo.InvariantCulture));
 
-            var client = new HttpClient();
-            var response = await client.GetStringAsync(URL);
+            string response = "";
+            using (var client = new HttpClient())
+            {
+                response = await client.GetStringAsync(URL);
+                client.Dispose();
+            }
 
             var searchresults = XElement.Parse(response);
             var resElement = searchresults.Elements("result").FirstOrDefault();
