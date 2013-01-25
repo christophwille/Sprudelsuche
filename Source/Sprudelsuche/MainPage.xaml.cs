@@ -36,6 +36,8 @@ namespace Sprudelsuche
     {
         public MainPageViewModel ViewModel { get; set; }
 
+        private IBackgroundTaskRegistration _task;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -46,9 +48,9 @@ namespace Sprudelsuche
                 DataContext = ViewModel;
             }
 
-            var task = UpdateTaskManagementService.GetTaskRegistration();
-            if (null != task)
-                task.Completed += new BackgroundTaskCompletedEventHandler(OnCompleted);
+             _task = UpdateTaskManagementService.GetTaskRegistration();
+            if (null != _task)
+                _task.Completed += new BackgroundTaskCompletedEventHandler(OnCompleted);
         }
 
         /// <summary>
@@ -69,6 +71,14 @@ namespace Sprudelsuche
                           {
                               await ViewModel.LoadDataAsync();
                           });
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            if (null != _task)
+                _task.Completed -= new BackgroundTaskCompletedEventHandler(OnCompleted);
+
+            base.OnNavigatingFrom(e);
         }
 
         private void OnCompleted(IBackgroundTaskRegistration task, BackgroundTaskCompletedEventArgs args)
