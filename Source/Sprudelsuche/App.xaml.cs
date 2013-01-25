@@ -114,9 +114,9 @@ namespace Sprudelsuche
                 var settings = new SettingsFlyout();
                 settings.Content = new AboutUserControl();
 
-                //var backgroundBrush = ResourceService.Get<SolidColorBrush>("AppBackgroundColorBrush");
-                //settings.HeaderBrush = backgroundBrush;
-                //settings.Background = backgroundBrush;
+                var backgroundBrush = ResourceService.Get<SolidColorBrush>("AppBackgroundColorBrush");
+                // settings.HeaderBrush = backgroundBrush;
+                settings.ContentBackgroundBrush = backgroundBrush;
                 settings.HeaderText = "Über";
                 settings.IsOpen = true;
             });
@@ -129,9 +129,9 @@ namespace Sprudelsuche
                 var settings = new SettingsFlyout();
                 settings.Content = new PreferencesUserControl();
 
-                //var backgroundBrush = ResourceService.Get<SolidColorBrush>("AppBackgroundColorBrush");
-                //settings.HeaderBrush = backgroundBrush;
-                //settings.Background = backgroundBrush;
+                var backgroundBrush = ResourceService.Get<SolidColorBrush>("AppBackgroundColorBrush");
+                // settings.HeaderBrush = backgroundBrush;
+                settings.ContentBackgroundBrush = backgroundBrush;
                 settings.HeaderText = "Einstellungen";
                 settings.IsOpen = true;
             });
