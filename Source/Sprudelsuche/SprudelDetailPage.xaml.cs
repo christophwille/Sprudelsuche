@@ -169,6 +169,8 @@ namespace Sprudelsuche
         {
             DataTransferManager.GetForCurrentView().DataRequested -= OnDataRequested;
             myMap.TargetViewChanged -= MyMapOnTargetViewChanged;
+            myMap.Children.Clear();
+
             Messenger.Default.Unregister<NotificationMessage>(this, SprudelDetailViewModel.MessengerUpdateMapNotification);
         }
 
