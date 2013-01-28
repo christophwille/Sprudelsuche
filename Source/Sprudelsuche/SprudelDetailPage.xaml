@@ -37,7 +37,7 @@
                             Tag="PinUnpin" 
                             Command="{Binding PinCommand, Mode=OneWay}" />
                     <Button AutomationProperties.Name="Zu Favoriten hinzufügen" 
-                            x:Name="Add" 
+                            x:Name="AddAppBarButton" 
                             Visibility="{Binding AddToFavoritesEnabled, Converter={StaticResource VisibilityConverter}}"
                             Style="{StaticResource AddAppBarButtonStyle}" 
                             Tag="Add" 

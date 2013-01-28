@@ -65,6 +65,15 @@ namespace Sprudelsuche
             pageState[Constants.AddSprudelSuchePageState] = serializedState;
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            itemGridView.ItemClick -= QueryLocationAndGoToDetailsPage;
+            DataContext = null;
+            ViewModel = null;
+        }
+
         private void MyMapOnTargetViewChanged(object sender, TargetViewChangedEventArgs targetViewChangedEventArgs)
         {
             var bounds = myMap.TargetBounds;

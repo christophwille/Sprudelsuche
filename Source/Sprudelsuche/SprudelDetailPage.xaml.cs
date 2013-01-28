@@ -174,6 +174,15 @@ namespace Sprudelsuche
             Messenger.Default.Unregister<NotificationMessage>(this, SprudelDetailViewModel.MessengerUpdateMapNotification);
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            AddAppBarButton.Click -= AppBar_Add_Click;
+            DataContext = null;
+            ViewModel = null;
+        }
+
         void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
         {
             var request = args.Request;
