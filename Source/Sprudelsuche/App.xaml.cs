@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Callisto.Controls;
-using Sprudelsuche.Common;
+using Sprudelsuche.Common8;
 using Sprudelsuche.Services;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -111,7 +111,7 @@ namespace Sprudelsuche
             // Add an About command
             var about = new SettingsCommand("about", "Über", (handler) =>
             {
-                var settings = new SettingsFlyout();
+                var settings = new Callisto.Controls.SettingsFlyout();
                 settings.Content = new AboutUserControl();
 
                 var backgroundBrush = ResourceService.Get<SolidColorBrush>("AppBackgroundColorBrush");
@@ -126,7 +126,7 @@ namespace Sprudelsuche
             // Add a Preferences command
             var preferences = new SettingsCommand("preferences", "Einstellungen", (handler) =>
             {
-                var settings = new SettingsFlyout();
+                var settings = new Callisto.Controls.SettingsFlyout();
                 settings.Content = new PreferencesUserControl();
 
                 var backgroundBrush = ResourceService.Get<SolidColorBrush>("AppBackgroundColorBrush");

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Callisto.Controls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -15,7 +14,7 @@ namespace Sprudelsuche.Services
         // Unused and untested 
         public static void ShowMessage(string message, UIElement placementTarget, PlacementMode placementMode=PlacementMode.Top)
         {
-            Flyout f = new Flyout();
+            var f = new Callisto.Controls.Flyout();
 
             var b = new Border()
                            {

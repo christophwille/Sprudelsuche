@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30626.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprudelsuche", "Sprudelsuche\Sprudelsuche.csproj", "{760A1DF3-9406-45EB-9186-F7E4E4DA2154}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SprudelSuche.ThirdParty", "SprudelSuche.ThirdParty\SprudelSuche.ThirdParty.csproj", "{B9291A39-F133-4EB7-A89B-09887AFAAE79}"
@@ -11,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprudelsuche.Tasks", "Sprud
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprudelsuche.Portable", "Sprudelsuche.Portable\Sprudelsuche.Portable.csproj", "{E3C1D9B1-87D1-4C1E-BCD6-5579BD78433E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprudelsuche.WinRT", "Sprudelsuche.WinRT\Sprudelsuche.WinRT.csproj", "{50FC75E0-E404-4609-A173-6DE34221A9E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprudelsuche.Common8", "Sprudelsuche.Common8\Sprudelsuche.Common8.csproj", "{50FC75E0-E404-4609-A173-6DE34221A9E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

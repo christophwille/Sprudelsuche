@@ -3,7 +3,7 @@ using System.Collections.Generic;
 //
 // Generated with: http://json2csharp.com/
 //
-namespace Sprudelsuche.WinRT.Proxies.Model
+namespace Sprudelsuche.Portable.Proxies.Model
 {
     internal class ErrorItem
     {

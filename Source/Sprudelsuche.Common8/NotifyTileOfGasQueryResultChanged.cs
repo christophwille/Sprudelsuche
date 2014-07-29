@@ -9,7 +9,7 @@ using Sprudelsuche.Portable.Model;
 using Windows.UI.Notifications;
 using Windows.UI.StartScreen;
 
-namespace Sprudelsuche.WinRT
+namespace Sprudelsuche.Common8
 {
     public class NotifyTileOfGasQueryResultChanged : INotifyGasQueryResultChanged
     {

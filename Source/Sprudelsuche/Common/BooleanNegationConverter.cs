@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace Sprudelsuche.Common
+namespace Sprudelsuche.Common8
 {
     /// <summary>
     /// Value converter that translates true to false and vice versa.

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using Sprudelsuche.Portable.Model;
 using Sprudelsuche.Services;
-using Sprudelsuche.WinRT.Proxies;
+using Sprudelsuche.Portable.Proxies;
 using Sprudelsuche.ViewModels;
 using Windows.ApplicationModel.Background;
 using Windows.Foundation;
@@ -32,7 +32,7 @@ namespace Sprudelsuche
     /// A page that displays a collection of item previews.  In the Split Application this page
     /// is used to display and select one of the available groups.
     /// </summary>
-    public sealed partial class MainPage : Sprudelsuche.Common.LayoutAwarePage, IViewModelAwarePage<MainPageViewModel>
+    public sealed partial class MainPage : Sprudelsuche.Common8.LayoutAwarePage, IViewModelAwarePage<MainPageViewModel>
     {
         public MainPageViewModel ViewModel { get; set; }
 

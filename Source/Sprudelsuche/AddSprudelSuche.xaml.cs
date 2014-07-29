@@ -7,10 +7,10 @@ using Bing.Maps;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using SprudelSuche.ThirdParty;
-using Sprudelsuche.Common;
+using Sprudelsuche.Common8;
 using Sprudelsuche.Model;
 using Sprudelsuche.Portable.Model;
-using Sprudelsuche.WinRT.Proxies;
+using Sprudelsuche.Portable.Proxies;
 using Sprudelsuche.ViewModels;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
@@ -27,7 +27,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Sprudelsuche
 {
-    public sealed partial class AddSprudelSuche : Sprudelsuche.Common.LayoutAwarePage, IViewModelAwarePage<AddSprudelSucheViewModel>
+    public sealed partial class AddSprudelSuche : Sprudelsuche.Common8.LayoutAwarePage, IViewModelAwarePage<AddSprudelSucheViewModel>
     {
         public AddSprudelSucheViewModel ViewModel { get; set; }
 

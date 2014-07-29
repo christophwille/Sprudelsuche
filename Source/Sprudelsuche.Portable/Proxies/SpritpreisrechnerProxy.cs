@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Sprudelsuche.Portable;
 using Sprudelsuche.Portable.Model;
-using Sprudelsuche.WinRT.Proxies.Model;
+using Sprudelsuche.Portable.Proxies.Model;
 
-namespace Sprudelsuche.WinRT.Proxies
+namespace Sprudelsuche.Portable.Proxies
 {
     public class SpritpreisrechnerProxy : IGasPriceInfoProxy
     {

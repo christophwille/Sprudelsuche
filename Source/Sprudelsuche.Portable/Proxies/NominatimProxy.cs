@@ -8,7 +8,7 @@ using System.Xml.Linq;
 using Sprudelsuche.Portable;
 using Sprudelsuche.Portable.Model;
 
-namespace Sprudelsuche.WinRT.Proxies
+namespace Sprudelsuche.Portable.Proxies
 {
     //
     // http://open.mapquestapi.com/nominatim/

@@ -8,12 +8,12 @@ using NotificationsExtensions.BadgeContent;
 using NotificationsExtensions.TileContent;
 using Sprudelsuche.Portable;
 using Sprudelsuche.Portable.Model;
+using Sprudelsuche.Portable.Proxies;
 using SprudelSuche.ThirdParty.XAMLMetroAppIsolatedStorageHelper;
-using Sprudelsuche.WinRT.Proxies;
 using Windows.UI.Notifications;
 using Windows.UI.StartScreen;
 
-namespace Sprudelsuche.WinRT
+namespace Sprudelsuche.Common8
 {
     public class SprudelRepository : ISprudelRepository
     {

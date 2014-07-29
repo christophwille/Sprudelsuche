@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using SprudelSuche.ThirdParty;
-using Sprudelsuche.Common;
+using Sprudelsuche.Common8;
 using Sprudelsuche.Model;
 using Sprudelsuche.Portable.Model;
 using Sprudelsuche.Services;
@@ -31,7 +31,7 @@ using Windows.Storage.Streams;
 
 namespace Sprudelsuche
 {
-    public sealed partial class SprudelDetailPage : Sprudelsuche.Common.LayoutAwarePage, IViewModelAwarePage<SprudelDetailViewModel>
+    public sealed partial class SprudelDetailPage : Sprudelsuche.Common8.LayoutAwarePage, IViewModelAwarePage<SprudelDetailViewModel>
     {
         public SprudelDetailViewModel ViewModel { get; set; }
 

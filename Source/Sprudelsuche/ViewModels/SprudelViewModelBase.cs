@@ -14,7 +14,7 @@ namespace Sprudelsuche.ViewModels
 
         public SprudelViewModelBase()
         {
-            CreateSprudelRepository = () => new Sprudelsuche.WinRT.SprudelRepository();
+            CreateSprudelRepository = () => new Sprudelsuche.Common8.SprudelRepository();
         }
 
         public string BingMapsCredentials

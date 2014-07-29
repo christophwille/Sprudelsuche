@@ -18,7 +18,7 @@ namespace Sprudelsuche.Tasks
 
         public UpdateTask()
         {
-            CreateSprudelRepository = () => new Sprudelsuche.WinRT.SprudelRepository();
+            CreateSprudelRepository = () => new Sprudelsuche.Common8.SprudelRepository();
         }
 
         public async void Run(IBackgroundTaskInstance taskInstance)

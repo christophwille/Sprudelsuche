@@ -12,7 +12,7 @@ using Sprudelsuche.Model;
 using Sprudelsuche.Portable;
 using Sprudelsuche.Portable.Model;
 using Sprudelsuche.Services;
-using Sprudelsuche.WinRT.Proxies;
+using Sprudelsuche.Portable.Proxies;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.UI.Popups;

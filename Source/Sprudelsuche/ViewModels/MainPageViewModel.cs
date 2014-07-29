@@ -11,7 +11,7 @@ using NotificationsExtensions.TileContent;
 using Sprudelsuche.Model;
 using Sprudelsuche.Portable.Model;
 using Sprudelsuche.Services;
-using Sprudelsuche.WinRT.Proxies;
+using Sprudelsuche.Portable.Proxies;
 using Windows.ApplicationModel.Background;
 using Windows.UI.Notifications;
 using Windows.UI.Popups;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
-using Sprudelsuche.Common;
+using Sprudelsuche.Common8;
 
 namespace Sprudelsuche.ViewModels
 {

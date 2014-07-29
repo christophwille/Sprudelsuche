@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Sprudelsuche.WinRT.Proxies
+namespace Sprudelsuche.Portable.Proxies
 {
     internal static class MappingHelpers
     {
