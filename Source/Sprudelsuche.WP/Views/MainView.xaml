@@ -1,0 +1,98 @@
+﻿<Page
+    x:Class="Sprudelsuche.WP.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Sprudelsuche.WP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:caliburn="using:Caliburn.Micro"
+    xmlns:designViewModels="using:Sprudelsuche.WP.DesignViewModels"
+    mc:Ignorable="d"
+    d:DataContext="{Binding Source={d:DesignInstance Type=designViewModels:MainViewModelDT, IsDesignTimeCreatable=True}}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+        <Hub Header="spritpreise">
+            <HubSection Header="SUCHE">
+                <DataTemplate>
+                    <Grid caliburn:View.Model="{Binding}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBox Grid.Column="0" 
+                                     Header="Ort" 
+                                     PlaceholderText="min 3 Buchstaben" 
+                                     Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     />
+                            
+                            <Button Margin="10,0,0,0" Grid.Column="1" VerticalAlignment="Bottom"
+                                    Content="Suche"
+                                    caliburn:Message.Attach="[Event Click] = [Action Search()]" />
+                        </Grid>
+
+                        <ListView 
+                            Grid.Row="1"
+                            ItemsSource="{Binding Results}"
+                            SelectedItem="{Binding SelectedResult,Mode=TwoWay}"
+                            ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,0,27.5">
+                                            <TextBlock Text="{Binding Name}" Style="{ThemeResource ListViewItemTextBlockStyle}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                        </ListView>
+                        
+                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                            <Button caliburn:Message.Attach="[Event Click] = [Action DieselAnzeigen()]" Content="Diesel" Margin="5" />
+                            <Button caliburn:Message.Attach="[Event Click] = [Action SuperAnzeigen()]" Content="Super" Margin="5"  />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection Header="ÜBER">
+                <DataTemplate>
+                    <Grid>
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="Sprudelsuche" Style="{ThemeResource TitleTextBlockStyle}" />
+                                <TextBlock Text="by Christoph Wille" />
+
+                                <StackPanel Orientation="Horizontal" Margin="0,18,0,0">
+                                    <TextBlock Text="Version: " />
+                                    <TextBlock Margin="0" Text="{Binding VersionText}" />
+                                </StackPanel>
+
+                                <Button caliburn:Message.Attach="[Event Click] = [Action Review()]"
+                                        HorizontalAlignment="Left" 
+                                        Content="Review"/>
+
+                                <HyperlinkButton
+                                        NavigateUri="{Binding GitHubUrl}"
+                                        HorizontalAlignment="Left"
+                                        Content="Source Code" />
+                                
+                                <HyperlinkButton
+                                        NavigateUri="{Binding PrivacyPolicyUrl}"
+                                        HorizontalAlignment="Left"
+                                        Content="Privacy Policy" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+    </Grid>
+</Page>

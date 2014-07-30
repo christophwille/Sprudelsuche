@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprudelsuche.Portable", "Sp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprudelsuche.Common8", "Sprudelsuche.Common8\Sprudelsuche.Common8.csproj", "{50FC75E0-E404-4609-A173-6DE34221A9E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprudelsuche.WP", "Sprudelsuche.WP\Sprudelsuche.WP.csproj", "{516138CC-E662-46BD-ADA5-F3D636D0EC47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,6 +185,38 @@ Global
 		{50FC75E0-E404-4609-A173-6DE34221A9E0}.Release|x64.Build.0 = Release|x64
 		{50FC75E0-E404-4609-A173-6DE34221A9E0}.Release|x86.ActiveCfg = Release|x86
 		{50FC75E0-E404-4609-A173-6DE34221A9E0}.Release|x86.Build.0 = Release|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|ARM.ActiveCfg = Debug|ARM
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|ARM.Build.0 = Debug|ARM
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|ARM.Deploy.0 = Debug|ARM
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Mixed Platforms.Deploy.0 = Debug|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Win32.ActiveCfg = Debug|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Win32.Build.0 = Debug|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Win32.Deploy.0 = Debug|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|x86.ActiveCfg = Debug|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|x86.Build.0 = Debug|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|x86.Deploy.0 = Debug|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|ARM.ActiveCfg = Release|ARM
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|ARM.Build.0 = Release|ARM
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|ARM.Deploy.0 = Release|ARM
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|Mixed Platforms.Build.0 = Release|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|Mixed Platforms.Deploy.0 = Release|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|Win32.ActiveCfg = Release|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|Win32.Build.0 = Release|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|Win32.Deploy.0 = Release|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|x64.ActiveCfg = Release|Any CPU
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|x86.ActiveCfg = Release|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|x86.Build.0 = Release|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

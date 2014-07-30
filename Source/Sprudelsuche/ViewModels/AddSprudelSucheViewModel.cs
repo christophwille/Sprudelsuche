@@ -208,7 +208,7 @@ namespace Sprudelsuche.ViewModels
             try
             {
                 var gasinfoProxy = CreateGasPriceInfoProxy();
-                var result = await gasinfoProxy.Download(_queryParameters);
+                var result = await gasinfoProxy.DownloadAsync(_queryParameters);
 
                 if (result.Succeeded)
                 {

@@ -16,7 +16,7 @@ namespace Sprudelsuche.Portable.Proxies
     {
         private const string URL = "http://www.spritpreisrechner.at/ts/GasStationServlet";
 
-        public async Task<GasQueryDownloadResult> Download(GasQuery parameter)
+        public async Task<GasQueryDownloadResult> DownloadAsync(GasQuery parameter)
         {
             string postData = Uri.EscapeUriString(parameter.ToPostData());
 

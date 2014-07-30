@@ -9,6 +9,6 @@ namespace Sprudelsuche.Portable
 {
     public interface IGasPriceInfoProxy
     {
-        Task<GasQueryDownloadResult> Download(GasQuery parameter);
+        Task<GasQueryDownloadResult> DownloadAsync(GasQuery parameter);
     }
 }

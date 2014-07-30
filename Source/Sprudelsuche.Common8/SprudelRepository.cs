@@ -70,7 +70,7 @@ namespace Sprudelsuche.Common8
                 {
                     var copyForClosure = current;
 
-                    var task = new Task<GasQueryDownloadResult>(() => CreateGasPriceInfoProxy().Download(copyForClosure).Result);
+                    var task = new Task<GasQueryDownloadResult>(() => CreateGasPriceInfoProxy().DownloadAsync(copyForClosure).Result);
                     taskList.Add(task);
                     task.Start();
                 }
@@ -128,7 +128,7 @@ namespace Sprudelsuche.Common8
             try
             {
                 var proxy = CreateGasPriceInfoProxy();
-                var ergebnis = await proxy.Download(parameters);
+                var ergebnis = await proxy.DownloadAsync(parameters);
 
                 if (ergebnis.Succeeded)
                 {
