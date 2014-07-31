@@ -12,11 +12,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
         <Hub Header="spritpreise">
             <HubSection Header="SUCHE">
                 <DataTemplate>
-                    <Grid caliburn:View.Model="{Binding}">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
@@ -43,6 +42,7 @@
                         <ListView 
                             Grid.Row="1"
                             ItemsSource="{Binding Results}"
+                            SelectionMode="Single"
                             SelectedItem="{Binding SelectedResult,Mode=TwoWay}"
                             ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                                 <ListView.ItemTemplate>
