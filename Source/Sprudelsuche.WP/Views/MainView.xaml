@@ -49,8 +49,10 @@
                         <ListView 
                             Grid.Row="1"
                             ItemsSource="{Binding Results}"
-                            SelectionMode="Single"
-                            SelectedItem="{Binding SelectedResult,Mode=TwoWay}"
+                            SelectionMode="None" 
+                            IsSwipeEnabled="False"
+                            IsItemClickEnabled="True"
+                            caliburn:Message.Attach="[Event ItemClick] = [CitySelected($eventArgs)]"
                             ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -62,8 +64,8 @@
                         </ListView>
                         
                         <StackPanel Grid.Row="2" Orientation="Horizontal">
-                            <Button caliburn:Message.Attach="[Event Click] = [Action DieselAnzeigen()]" Content="Diesel" Margin="5" />
-                            <Button caliburn:Message.Attach="[Event Click] = [Action SuperAnzeigen()]" Content="Super" Margin="5"  />
+                            <RadioButton Content="Diesel" IsChecked="{Binding DieselSelected, Mode=TwoWay}" />
+                            <RadioButton Content="Super"  IsChecked="{Binding SuperSelected, Mode=TwoWay}" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

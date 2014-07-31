@@ -11,6 +11,7 @@ using Caliburn.Micro;
 using Sprudelsuche.Portable;
 using Sprudelsuche.Portable.Model;
 using Sprudelsuche.Portable.Proxies;
+using Sprudelsuche.WP.Services;
 
 namespace Sprudelsuche.WP.ViewModels
 {
@@ -22,10 +23,12 @@ namespace Sprudelsuche.WP.ViewModels
         public bool Loading { get; set; }
 
         private INavigationService _navigationService;
+        private readonly IMessageService _messageService;
 
-        public MainViewModel(INavigationService navigationService)
+        public MainViewModel(INavigationService navigationService, IMessageService messageService)
         {
             _navigationService = navigationService;
+            _messageService = messageService;
 
             CreateGeocodeProxy = () => new NominatimProxy();
 
@@ -33,6 +36,36 @@ namespace Sprudelsuche.WP.ViewModels
         }
 
         public string SearchText { get; set; }
+
+        private FuelTypeEnum _selectedFuelType = FuelTypeEnum.Diesel;
+
+        public bool DieselSelected
+        {
+            get
+            {
+                return _selectedFuelType == FuelTypeEnum.Diesel;
+            }
+            set
+            {
+                _selectedFuelType = FuelTypeEnum.Diesel;
+                NotifyOfPropertyChange(() => DieselSelected);
+                NotifyOfPropertyChange(() => SuperSelected);
+            }
+        }
+
+        public bool SuperSelected
+        {
+            get
+            {
+                return _selectedFuelType == FuelTypeEnum.Super; 
+            }
+            set
+            {
+                _selectedFuelType = FuelTypeEnum.Super;
+                NotifyOfPropertyChange(() => DieselSelected);
+                NotifyOfPropertyChange(() => SuperSelected);
+            }
+        }
 
 
         private bool CanStartSearch(string searchString)
@@ -49,14 +82,13 @@ namespace Sprudelsuche.WP.ViewModels
             await SearchForMatchesAsync(SearchText);
         }
 
-        public bool CanSearch { get { return CanStartSearch(SearchText); }}
+        public bool CanSearch { get { return CanStartSearch(SearchText); } }
 
         private async Task SearchForMatchesAsync(string searchString)
         {
             if (!CanStartSearch(searchString))
                 return;
 
-            SelectedResult = null;
             Results = null;
 
             try
@@ -71,8 +103,7 @@ namespace Sprudelsuche.WP.ViewModels
                 }
                 else
                 {
-                    Debug.WriteLine("Der Ort konnte nicht gefunden werden");
-                    // InfoMessage = "Der Ort konnte nicht gefunden werden";
+                    await _messageService.ShowAsync("Der Ort konnte nicht gefunden werden");
                 }
             }
             catch (Exception ex)
@@ -86,26 +117,12 @@ namespace Sprudelsuche.WP.ViewModels
             }
         }
 
-        public GeocodeResult SelectedResult { get; set; }
-
-        public void DieselAnzeigen()
+        public void CitySelected(ItemClickEventArgs eventArgs)
         {
-            NavigateTo(SelectedResult, FuelTypeEnum.Diesel);
-        }
+            var selected = (GeocodeResult)eventArgs.ClickedItem;
 
-        public bool CanDieselAnzeigen { get { return null != SelectedResult; } }
-
-        public void SuperAnzeigen()
-        {
-            NavigateTo(SelectedResult, FuelTypeEnum.Super);
-        }
-
-        public bool CanSuperAnzeigen { get { return null != SelectedResult; } }
-
-        private void NavigateTo(GeocodeResult selected, FuelTypeEnum fuelType)
-        {
             _navigationService.UriFor<CurrentGasPricesViewModel>()
-                .WithParam(vm => vm.FuelType, fuelType)
+                .WithParam(vm => vm.FuelType, this._selectedFuelType)
                 .WithParam(vm => vm.StationName, selected.Name)
                 .WithParam(vm => vm.Longitude, selected.Longitude)
                 .WithParam(vm => vm.Latitude, selected.Latitude)
