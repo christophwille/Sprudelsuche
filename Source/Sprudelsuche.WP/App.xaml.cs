@@ -34,7 +34,7 @@ namespace Sprudelsuche.WP
 
         protected override void PrepareViewFirst(Frame rootFrame)
         {
-            container.RegisterNavigationService(this.RootFrame);
+            navigationService = container.RegisterNavigationService(rootFrame);
         }
 
         protected override object GetInstance(Type service, string key)
@@ -73,10 +73,10 @@ namespace Sprudelsuche.WP
 
 
             // THIS CRASHES WITH AN ACCESS VIOLATION (AV) - no idea why
-            // DisplayRootView<MainView>();
+            DisplayRootView<MainView>();
 
             // AND THIS DOESN'T WORK PROPERLY WITH NAVIGATION
-            DisplayRootViewFor<MainViewModel>();
+            // DisplayRootViewFor<MainViewModel>();
         }
 
         protected override void OnSuspending(object sender, SuspendingEventArgs e)
