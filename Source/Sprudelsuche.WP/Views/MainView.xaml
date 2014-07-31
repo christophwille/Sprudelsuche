@@ -9,8 +9,15 @@
     xmlns:designViewModels="using:Sprudelsuche.WP.DesignViewModels"
     mc:Ignorable="d"
     d:DataContext="{Binding Source={d:DesignInstance Type=designViewModels:MainViewModelDT, IsDesignTimeCreatable=True}}"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:common="using:Sprudelsuche.WP.Common"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <i:Interaction.Behaviors>
+        <common:ProgressBehavior IsVisible="{Binding Loading}"
+                                Text="Suche Ort"/>
+    </i:Interaction.Behaviors>
+    
     <Grid>
         <Hub Header="spritpreise">
             <HubSection Header="SUCHE">

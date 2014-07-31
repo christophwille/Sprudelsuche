@@ -5,6 +5,7 @@ using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
 using Windows.ApplicationModel.Activation;
+using Sprudelsuche.WP.Services;
 using Sprudelsuche.WP.ViewModels;
 using Sprudelsuche.WP.Views;
 
@@ -26,6 +27,8 @@ namespace Sprudelsuche.WP
 
             container = new WinRTContainer();
             container.RegisterWinRTServices();
+
+            container.RegisterPerRequest(typeof(IMessageService), null, typeof(DefaultMessageService));
 
             container
                 .PerRequest<MainViewModel>()
@@ -61,22 +64,15 @@ namespace Sprudelsuche.WP
 
             PrepareViewFirst();
 
-            ////var resumed = false;
+            var resumed = false;
 
-            ////if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
-            ////{
-            ////    resumed = navigationService.ResumeState();
-            ////}
+            if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
+            {
+                resumed = navigationService.ResumeState();
+            }
 
-            ////if (!resumed)
-            ////    DisplayRootViewFor<MainViewModel>();
-
-
-            // THIS CRASHES WITH AN ACCESS VIOLATION (AV) - no idea why
-            DisplayRootView<MainView>();
-
-            // AND THIS DOESN'T WORK PROPERLY WITH NAVIGATION
-            // DisplayRootViewFor<MainViewModel>();
+            if (!resumed)
+                DisplayRootView<MainView>();
         }
 
         protected override void OnSuspending(object sender, SuspendingEventArgs e)

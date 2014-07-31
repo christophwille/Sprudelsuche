@@ -4,16 +4,19 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 using Caliburn.Micro;
 using Sprudelsuche.Portable;
 using Sprudelsuche.Portable.Model;
 using Sprudelsuche.Portable.Proxies;
+using Sprudelsuche.WP.Services;
 
 namespace Sprudelsuche.WP.ViewModels
 {
     public class CurrentGasPricesViewModel : Screen
     {
         private readonly INavigationService _navigationService;
+        private readonly IMessageService _messageService;
         public FuelTypeEnum FuelType { get; set; }
         public string StationName { get; set; }
         public double Latitude { get; set; }
@@ -24,14 +27,31 @@ namespace Sprudelsuche.WP.ViewModels
         private const double LongitudeBoundingBox = 0.01716;
 
         public Func<IGasPriceInfoProxy> CreateGasPriceInfoProxy { get; set; }
+        public bool Loading { get; set; }
 
-        public CurrentGasPricesViewModel(INavigationService navigationService)
+        public CurrentGasPricesViewModel(INavigationService navigationService, IMessageService messageService)
         {
             _navigationService = navigationService;
+            _messageService = messageService;
+
             CreateGasPriceInfoProxy = () => new SpritpreisrechnerProxy();
         }
 
-        public async Task QueryForPrices()
+        protected async override void OnActivate()
+        {
+            base.OnActivate();
+
+#if !DEBUG
+            QueryPricesAsync();
+#endif
+        }
+
+        public async void RefreshPrices()
+        {
+            await QueryPricesAsync();
+        }
+
+        public async Task QueryPricesAsync()
         {
             QueryResult = null;
 
@@ -49,6 +69,8 @@ namespace Sprudelsuche.WP.ViewModels
 
             try
             {
+                Loading = true;
+
                 var gasinfoProxy = CreateGasPriceInfoProxy();
                 var result = await gasinfoProxy.DownloadAsync(q);
 
@@ -58,13 +80,19 @@ namespace Sprudelsuche.WP.ViewModels
                 }
                 else
                 {
-                    // InfoMessage = "Die Preise für den selektierten Ort konnten nicht abgerufen werden";
+                    await _messageService.ShowAsync("Die Preise für den selektierten Ort konnten nicht abgerufen werden");
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
+
+                // No await in catch *yet*
                 // InfoMessage = "Die Preise für den selektierten Ort konnten nicht abgerufen werden";
+            }
+            finally
+            {
+                Loading = false;
             }
         }
     }

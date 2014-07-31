@@ -6,9 +6,25 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:designViewModels="using:Sprudelsuche.WP.DesignViewModels"
+    xmlns:micro="using:Caliburn.Micro"
     mc:Ignorable="d"
     d:DataContext="{Binding Source={d:DesignInstance Type=designViewModels:CurrentGasPricesViewModelDT, IsDesignTimeCreatable=True}}"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:common="using:Sprudelsuche.WP.Common"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <i:Interaction.Behaviors>
+        <common:ProgressBehavior IsVisible="{Binding Loading}"
+                                Text="Lade Preise"/>
+    </i:Interaction.Behaviors>
+    
+    <Page.BottomAppBar>
+		<CommandBar>
+			<AppBarButton 
+                micro:Message.Attach="[Event Click] = [Action RefreshPrices()]"
+                Icon="ReShare" Label="neu laden"/>
+		</CommandBar>
+	</Page.BottomAppBar>
 
     <Grid>
         <Hub Header="{Binding StationName}">

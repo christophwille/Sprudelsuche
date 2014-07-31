@@ -19,6 +19,8 @@ namespace Sprudelsuche.WP.ViewModels
         private const int MinimumSearchStringLength = 3;
 
         public Func<IGeocodeProxy> CreateGeocodeProxy { get; set; }
+        public bool Loading { get; set; }
+
         private INavigationService _navigationService;
 
         public MainViewModel(INavigationService navigationService)
@@ -59,6 +61,7 @@ namespace Sprudelsuche.WP.ViewModels
 
             try
             {
+                Loading = true;
                 var geocodeProxy = CreateGeocodeProxy();
                 var result = await geocodeProxy.ExecuteQuery(searchString);
 
@@ -76,6 +79,10 @@ namespace Sprudelsuche.WP.ViewModels
             {
                 Debug.WriteLine(ex.ToString());
                 // InfoMessage = "Die Suchanfrage ist festgeschlagen";
+            }
+            finally
+            {
+                Loading = false;
             }
         }
 
