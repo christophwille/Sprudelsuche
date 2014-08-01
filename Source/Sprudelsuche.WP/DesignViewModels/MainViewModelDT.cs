@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprudelsuche.Portable.Model;
+using Sprudelsuche.WP.Models;
 
 namespace Sprudelsuche.WP.DesignViewModels
 {

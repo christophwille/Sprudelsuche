@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Newtonsoft.Json;
+using Sprudelsuche.WP.Models;
 
 namespace Sprudelsuche.WP.Services
 {

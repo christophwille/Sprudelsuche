@@ -8,14 +8,17 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Caliburn.Micro;
+using Newtonsoft.Json;
 using Sprudelsuche.Portable;
 using Sprudelsuche.Portable.Model;
 using Sprudelsuche.Portable.Proxies;
+using Sprudelsuche.WP.Common;
+using Sprudelsuche.WP.Models;
 using Sprudelsuche.WP.Services;
 
 namespace Sprudelsuche.WP.ViewModels
 {
-    public partial class MainViewModel : Screen
+    public partial class MainViewModel : Screen, IStateEnabledViewModel
     {
         private const int MinimumSearchStringLength = 3;
 
@@ -146,5 +149,38 @@ namespace Sprudelsuche.WP.ViewModels
                 .WithParam(vm => vm.Latitude, selected.Latitude)
                 .Navigate();
         }
+
+        #region Page State Management
+
+        private const string PageStateName = "MainViewModelState";
+        public void LoadState(Dictionary<string, object> pageState)
+        {
+            if (pageState != null && pageState.ContainsKey(PageStateName))
+            {
+                string json = pageState[PageStateName].ToString();
+                var state = JsonConvert.DeserializeObject<MainViewModelState>(json);
+                if (null == state) return;
+
+                this.SearchText = state.SearchText;
+                SelectFuelType(state.FuelType);
+                if (null != state.Results) this.Results = new ObservableCollection<GeocodeResult>(state.Results);
+            }
+        }
+
+        public void SaveState(Dictionary<string, object> pageState)
+        {
+            var state = new MainViewModelState()
+            {
+                SearchText = this.SearchText,
+                FuelType = this._selectedFuelType,
+            };
+            if (null != Results) state.Results = Results.ToList();
+
+            string json = JsonConvert.SerializeObject(state);
+
+            pageState[PageStateName] = json;
+        }
+
+        #endregion
     }
 }

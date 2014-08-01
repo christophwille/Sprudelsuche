@@ -83,10 +83,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\IStateEnabledViewModel.cs" />
+    <Compile Include="Common\StateEnabledPage.cs" />
+    <Compile Include="Common\StateHelper.cs" />
     <Compile Include="Common\ProgressBehavior.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="DesignViewModels\CurrentGasPricesViewModelDT.cs" />
     <Compile Include="DesignViewModels\MainViewModelDT.cs" />
-    <Compile Include="Favorite.cs" />
+    <Compile Include="Models\Favorite.cs" />
+    <Compile Include="Models\MainViewModelState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DefaultFavoritesRepository.cs" />
     <Compile Include="Services\DefaultMessageService.cs" />

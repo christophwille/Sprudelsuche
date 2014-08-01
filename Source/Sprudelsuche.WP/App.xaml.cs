@@ -5,6 +5,7 @@ using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
 using Windows.ApplicationModel.Activation;
+using Sprudelsuche.WP.Common;
 using Sprudelsuche.WP.Services;
 using Sprudelsuche.WP.ViewModels;
 using Sprudelsuche.WP.Views;
@@ -40,6 +41,7 @@ namespace Sprudelsuche.WP
         protected override void PrepareViewFirst(Frame rootFrame)
         {
             navigationService = container.RegisterNavigationService(rootFrame);
+            SuspensionManager.RegisterFrame(rootFrame, "AppFrame");
         }
 
         protected override object GetInstance(Type service, string key)
@@ -60,7 +62,7 @@ namespace Sprudelsuche.WP
             container.BuildUp(instance);
         }
 
-        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        protected async override void OnLaunched(LaunchActivatedEventArgs args)
         {
             Initialize();
 
@@ -71,15 +73,30 @@ namespace Sprudelsuche.WP
             if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
             {
                 resumed = navigationService.ResumeState();
+
+                // Restore the saved session state only when appropriate.
+                try
+                {
+                    await SuspensionManager.RestoreAsync();
+                }
+                catch (SuspensionManagerException)
+                {
+                    // Something went wrong restoring state.
+                    // Assume there is no state and continue.
+                }
             }
 
             if (!resumed)
                 DisplayRootView<MainView>();
         }
 
-        protected override void OnSuspending(object sender, SuspendingEventArgs e)
+        protected async override void OnSuspending(object sender, SuspendingEventArgs e)
         {
             navigationService.SuspendState();
+
+            var deferral = e.SuspendingOperation.GetDeferral();
+            await SuspensionManager.SaveAsync();
+            deferral.Complete();
         }
     }
 }

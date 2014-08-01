@@ -9,6 +9,7 @@ using Caliburn.Micro;
 using Sprudelsuche.Portable;
 using Sprudelsuche.Portable.Model;
 using Sprudelsuche.Portable.Proxies;
+using Sprudelsuche.WP.Models;
 using Sprudelsuche.WP.Services;
 
 namespace Sprudelsuche.WP.ViewModels

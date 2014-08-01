@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprudelsuche.Portable.Model;
 
-namespace Sprudelsuche.WP
+namespace Sprudelsuche.WP.Models
 {
     public class Favorite
     {
