@@ -15,12 +15,14 @@ namespace Sprudelsuche.WP.ViewModels
 {
     public class CurrentGasPricesViewModel : Screen
     {
-        private readonly INavigationService _navigationService;
         private readonly IMessageService _messageService;
+
+        // Navigation parameters
         public FuelTypeEnum FuelType { get; set; }
-        public string StationName { get; set; }
+        public string LocationName { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+
         public GasQueryResult QueryResult { get; set; }
 
         private const double LatitudeBoundingBox = 0.01511;
@@ -29,9 +31,8 @@ namespace Sprudelsuche.WP.ViewModels
         public Func<IGasPriceInfoProxy> CreateGasPriceInfoProxy { get; set; }
         public bool Loading { get; set; }
 
-        public CurrentGasPricesViewModel(INavigationService navigationService, IMessageService messageService)
+        public CurrentGasPricesViewModel(IMessageService messageService)
         {
-            _navigationService = navigationService;
             _messageService = messageService;
 
             CreateGasPriceInfoProxy = () => new SpritpreisrechnerProxy();

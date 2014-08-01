@@ -41,34 +41,24 @@ namespace Sprudelsuche.WP.ViewModels
 
         public bool DieselSelected
         {
-            get
-            {
-                return _selectedFuelType == FuelTypeEnum.Diesel;
-            }
-            set
-            {
-                _selectedFuelType = FuelTypeEnum.Diesel;
-                NotifyOfPropertyChange(() => DieselSelected);
-                NotifyOfPropertyChange(() => SuperSelected);
-            }
+            get { return _selectedFuelType == FuelTypeEnum.Diesel; }
+            set { SelectFuelType(FuelTypeEnum.Diesel); }
         }
 
         public bool SuperSelected
         {
-            get
-            {
-                return _selectedFuelType == FuelTypeEnum.Super; 
-            }
-            set
-            {
-                _selectedFuelType = FuelTypeEnum.Super;
-                NotifyOfPropertyChange(() => DieselSelected);
-                NotifyOfPropertyChange(() => SuperSelected);
-            }
+            get { return _selectedFuelType == FuelTypeEnum.Super; }
+            set { SelectFuelType(FuelTypeEnum.Super); }
         }
 
+        private void SelectFuelType(FuelTypeEnum ft)
+        {
+            _selectedFuelType = ft;
+            NotifyOfPropertyChange(() => DieselSelected);
+            NotifyOfPropertyChange(() => SuperSelected);
+        }
 
-        private bool CanStartSearch(string searchString)
+        private bool IsSearchTextValid(string searchString)
         {
             if (String.IsNullOrWhiteSpace(searchString)) return false;
 
@@ -82,11 +72,11 @@ namespace Sprudelsuche.WP.ViewModels
             await SearchForMatchesAsync(SearchText);
         }
 
-        public bool CanSearch { get { return CanStartSearch(SearchText); } }
+        public bool CanSearch { get { return IsSearchTextValid(SearchText); } }
 
         private async Task SearchForMatchesAsync(string searchString)
         {
-            if (!CanStartSearch(searchString))
+            if (!IsSearchTextValid(searchString))
                 return;
 
             Results = null;
@@ -123,7 +113,7 @@ namespace Sprudelsuche.WP.ViewModels
 
             _navigationService.UriFor<CurrentGasPricesViewModel>()
                 .WithParam(vm => vm.FuelType, this._selectedFuelType)
-                .WithParam(vm => vm.StationName, selected.Name)
+                .WithParam(vm => vm.LocationName, selected.Name)
                 .WithParam(vm => vm.Longitude, selected.Longitude)
                 .WithParam(vm => vm.Latitude, selected.Latitude)
                 .Navigate();

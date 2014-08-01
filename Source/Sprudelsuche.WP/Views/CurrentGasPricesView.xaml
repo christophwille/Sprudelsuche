@@ -27,7 +27,7 @@
 	</Page.BottomAppBar>
 
     <Grid>
-        <Hub Header="{Binding StationName}">
+        <Hub Header="{Binding LocationName}">
             <HubSection Header="{Binding FuelType}">
                 <DataTemplate>
                     <ListView 

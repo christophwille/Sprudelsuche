@@ -13,7 +13,7 @@ namespace Sprudelsuche.WP.DesignViewModels
         public CurrentGasPricesViewModelDT()
         {
             FuelType = FuelTypeEnum.Diesel;
-            StationName = "Leoben";
+            LocationName = "Leoben";
 
             QueryResult = new GasQueryResult();
             QueryResult.GasStationResults.Add(new GasStationResult()
@@ -24,7 +24,7 @@ namespace Sprudelsuche.WP.DesignViewModels
         }
 
         public FuelTypeEnum FuelType { get; set; }
-        public string StationName { get; set; }
+        public string LocationName { get; set; }
         public GasQueryResult QueryResult { get; set; }
     }
 }
