@@ -25,9 +25,18 @@ namespace Sprudelsuche.WP.DesignViewModels
                     Name = "Graz"
                 }
             };
+
+            Favorites = new List<Favorite>()
+            {
+                new Favorite()
+                {
+                    LocationName = "Bad Ischl"
+                }
+            };
         }
 
         public string VersionText { get; set; }
         public List<GeocodeResult> Results { get; set; }
+        public List<Favorite> Favorites { get; set; }
     }
 }

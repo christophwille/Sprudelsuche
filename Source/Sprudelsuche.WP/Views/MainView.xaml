@@ -70,6 +70,26 @@
                     </Grid>
                 </DataTemplate>
             </HubSection>
+            
+            <HubSection Header="FAVORITEN">
+                <DataTemplate>
+                    <ListView 
+                            ItemsSource="{Binding Favorites}"
+                            SelectionMode="None" 
+                            IsSwipeEnabled="False"
+                            IsItemClickEnabled="True"
+                            caliburn:Message.Attach="[Event ItemClick] = [FavoriteSelected($eventArgs)]"
+                            ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,27.5">
+                                    <TextBlock Text="{Binding LocationName}" Style="{ThemeResource ListViewItemTextBlockStyle}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DataTemplate>
+            </HubSection>
 
             <HubSection Header="ÜBER">
                 <DataTemplate>

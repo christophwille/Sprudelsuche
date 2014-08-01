@@ -23,6 +23,9 @@
 			<AppBarButton 
                 micro:Message.Attach="[Event Click] = [Action RefreshPrices()]"
                 Icon="ReShare" Label="neu laden"/>
+			<AppBarButton 
+                micro:Message.Attach="[Event Click] = [Action AddAsFavorite()]"
+                Icon="Favorite" Label="als favorit"/>
 		</CommandBar>
 	</Page.BottomAppBar>
 

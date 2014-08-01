@@ -22,17 +22,31 @@ namespace Sprudelsuche.WP.ViewModels
         public Func<IGeocodeProxy> CreateGeocodeProxy { get; set; }
         public bool Loading { get; set; }
 
-        private INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
         private readonly IMessageService _messageService;
+        private readonly IFavoritesRepository _favoritesRepository;
 
-        public MainViewModel(INavigationService navigationService, IMessageService messageService)
+        public MainViewModel(INavigationService navigationService, IMessageService messageService, IFavoritesRepository favoritesRepository)
         {
             _navigationService = navigationService;
             _messageService = messageService;
+            _favoritesRepository = favoritesRepository;
 
             CreateGeocodeProxy = () => new NominatimProxy();
 
             InitializeAbout();
+        }
+
+        protected async override void OnActivate()
+        {
+            base.OnActivate();
+
+            var favorites = await _favoritesRepository.LoadAsync();
+
+            if (null != favorites)
+            {
+                Favorites = new ObservableCollection<Favorite>(favorites);
+            }
         }
 
         public string SearchText { get; set; }
@@ -114,6 +128,20 @@ namespace Sprudelsuche.WP.ViewModels
             _navigationService.UriFor<CurrentGasPricesViewModel>()
                 .WithParam(vm => vm.FuelType, this._selectedFuelType)
                 .WithParam(vm => vm.LocationName, selected.Name)
+                .WithParam(vm => vm.Longitude, selected.Longitude)
+                .WithParam(vm => vm.Latitude, selected.Latitude)
+                .Navigate();
+        }
+
+        public ObservableCollection<Favorite> Favorites { get; set; }
+
+        public void FavoriteSelected(ItemClickEventArgs eventArgs)
+        {
+            var selected = (Favorite)eventArgs.ClickedItem;
+
+            _navigationService.UriFor<CurrentGasPricesViewModel>()
+                .WithParam(vm => vm.FuelType, selected.FuelType)
+                .WithParam(vm => vm.LocationName, selected.LocationName)
                 .WithParam(vm => vm.Longitude, selected.Longitude)
                 .WithParam(vm => vm.Latitude, selected.Latitude)
                 .Navigate();

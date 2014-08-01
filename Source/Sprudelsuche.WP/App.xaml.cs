@@ -28,6 +28,8 @@ namespace Sprudelsuche.WP
             container = new WinRTContainer();
             container.RegisterWinRTServices();
 
+            container.RegisterInstance(typeof(IFavoritesRepository), null, new DefaultFavoritesRepository());
+
             container.RegisterPerRequest(typeof(IMessageService), null, typeof(DefaultMessageService));
 
             container

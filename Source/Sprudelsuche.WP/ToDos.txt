@@ -3,3 +3,7 @@ Graphics
 
 State
 
+*
+
+implement remove for favorites
+debug / test favorites feature

@@ -16,6 +16,7 @@ namespace Sprudelsuche.WP.ViewModels
     public class CurrentGasPricesViewModel : Screen
     {
         private readonly IMessageService _messageService;
+        private readonly IFavoritesRepository _favoritesRepository;
 
         // Navigation parameters
         public FuelTypeEnum FuelType { get; set; }
@@ -31,9 +32,10 @@ namespace Sprudelsuche.WP.ViewModels
         public Func<IGasPriceInfoProxy> CreateGasPriceInfoProxy { get; set; }
         public bool Loading { get; set; }
 
-        public CurrentGasPricesViewModel(IMessageService messageService)
+        public CurrentGasPricesViewModel(IMessageService messageService, IFavoritesRepository favoritesRepository)
         {
             _messageService = messageService;
+            _favoritesRepository = favoritesRepository;
 
             CreateGasPriceInfoProxy = () => new SpritpreisrechnerProxy();
         }
@@ -50,6 +52,17 @@ namespace Sprudelsuche.WP.ViewModels
         public async void RefreshPrices()
         {
             await QueryPricesAsync();
+        }
+
+        public async void AddAsFavorite()
+        {
+            await _favoritesRepository.AddAsync(new Favorite()
+            {
+                LocationName = this.LocationName,
+                FuelType = this.FuelType,
+                Latitude = this.Latitude,
+                Longitude = this.Longitude
+            });
         }
 
         public async Task QueryPricesAsync()
