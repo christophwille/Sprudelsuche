@@ -84,6 +84,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\IStateEnabledViewModel.cs" />
+    <Compile Include="Common\OpenMenuFlyoutAction.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\StateEnabledPage.cs" />
     <Compile Include="Common\StateHelper.cs" />
     <Compile Include="Common\ProgressBehavior.cs" />

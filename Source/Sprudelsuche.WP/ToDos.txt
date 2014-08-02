@@ -2,8 +2,8 @@
 
 Issues
 
-implement remove for favorites
 debug / test favorites feature
+Interfaces for DT / Runtime vms
 
 
 

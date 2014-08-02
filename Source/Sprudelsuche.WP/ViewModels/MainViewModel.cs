@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Caliburn.Micro;
@@ -38,6 +39,8 @@ namespace Sprudelsuche.WP.ViewModels
             CreateGeocodeProxy = () => new NominatimProxy();
 
             InitializeAbout();
+
+            RemoveFavoriteCommand = new RelayCommand<Favorite>(async (f) => await RemoveFavorite(f));
         }
 
         protected async override void OnActivate()
@@ -148,6 +151,13 @@ namespace Sprudelsuche.WP.ViewModels
                 .WithParam(vm => vm.Longitude, selected.Longitude)
                 .WithParam(vm => vm.Latitude, selected.Latitude)
                 .Navigate();
+        }
+
+        public ICommand RemoveFavoriteCommand { get; private set; }
+        public async Task RemoveFavorite(Favorite toRemove)
+        {
+            var favorites = await _favoritesRepository.RemoveAsync(toRemove);
+            Favorites = new ObservableCollection<Favorite>(favorites);
         }
 
         #region Page State Management

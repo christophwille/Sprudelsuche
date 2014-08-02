@@ -11,14 +11,15 @@
     d:DataContext="{Binding Source={d:DesignInstance Type=designViewModels:MainViewModelDT, IsDesignTimeCreatable=True}}"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:common="using:Sprudelsuche.WP.Common"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <i:Interaction.Behaviors>
         <common:ProgressBehavior IsVisible="{Binding Loading}"
                                 Text="Suche Ort"/>
     </i:Interaction.Behaviors>
-    
-    <Grid>
+
+    <Grid x:Name="RootGrid">
         <Hub Header="spritpreise">
             <HubSection Header="SUCHE">
                 <DataTemplate>
@@ -28,19 +29,19 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        
+
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            
+
                             <TextBox Grid.Column="0" 
                                      Header="Ort" 
                                      PlaceholderText="min 3 Buchstaben" 
                                      Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      />
-                            
+
                             <Button Margin="10,0,0,0" Grid.Column="1" VerticalAlignment="Bottom"
                                     Content="Suche"
                                     caliburn:Message.Attach="[Event Click] = [Action Search()]" />
@@ -54,15 +55,15 @@
                             IsItemClickEnabled="True"
                             caliburn:Message.Attach="[Event ItemClick] = [CitySelected($eventArgs)]"
                             ContinuumNavigationTransitionInfo.ExitElementContainer="True">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Margin="0,0,0,27.5">
-                                            <TextBlock Text="{Binding Name}" Style="{ThemeResource ListViewItemTextBlockStyle}" />
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0,0,0,27.5">
+                                        <TextBlock Text="{Binding Name}" Style="{ThemeResource ListViewItemTextBlockStyle}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
-                        
+
                         <StackPanel Grid.Row="2" Orientation="Horizontal">
                             <RadioButton Content="Diesel" IsChecked="{Binding DieselSelected, Mode=TwoWay}" />
                             <RadioButton Content="Super"  IsChecked="{Binding SuperSelected, Mode=TwoWay}" />
@@ -70,12 +71,11 @@
                     </Grid>
                 </DataTemplate>
             </HubSection>
-            
+
             <HubSection Header="FAVORITEN">
                 <DataTemplate>
                     <ListView 
                             ItemsSource="{Binding Favorites}"
-                            SelectionMode="None" 
                             IsSwipeEnabled="False"
                             IsItemClickEnabled="True"
                             caliburn:Message.Attach="[Event ItemClick] = [FavoriteSelected($eventArgs)]"
@@ -83,6 +83,24 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,27.5">
+                                    <i:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Holding">
+                                            <common:OpenMenuFlyoutAction />
+                                        </core:EventTriggerBehavior>
+                                    </i:Interaction.Behaviors>
+                                    <FlyoutBase.AttachedFlyout>
+                                        <MenuFlyout>
+                                            <MenuFlyoutItem Text="Löschen" Command="{Binding DataContext.RemoveFavoriteCommand, ElementName=RootGrid}" CommandParameter="{Binding Mode=OneWay}" >
+                                                <!--<i:Interaction.Behaviors>
+                                            		<core:EventTriggerBehavior EventName="Click">
+                                                        <caliburn:ActionMessage MethodName="RemoveFavorite">
+                                                            <caliburn:Parameter Value="{Binding ElementName=FavoriteTemplateRootPanel, Path=DataContext}" />
+                                                        </caliburn:ActionMessage>
+                                                    </core:EventTriggerBehavior>
+                                            	</i:Interaction.Behaviors>-->
+                                            </MenuFlyoutItem>
+                                        </MenuFlyout>
+                                    </FlyoutBase.AttachedFlyout>
                                     <TextBlock Text="{Binding LocationName}" Style="{ThemeResource ListViewItemTextBlockStyle}" />
                                 </StackPanel>
                             </DataTemplate>
@@ -98,7 +116,7 @@
                             <StackPanel>
                                 <TextBlock Text="Sprudelsuche Österreich" Style="{ThemeResource TitleTextBlockStyle}" />
                                 <TextBlock Text="by Christoph Wille" />
-                                
+
                                 <TextBlock Margin="0,10,0,0" TextWrapping="Wrap"
                                            Text="Diese Applikation ist werbefrei und Open Source. Haben Sie Ideen für Features? Einen Fehler gefunden? Bitte gehen Sie zur Supportseite und teilen es den Entwicklern mit. Danke!"/>
 
@@ -115,7 +133,7 @@
                                         NavigateUri="{Binding GitHubUrl}"
                                         HorizontalAlignment="Left"
                                         Content="Support &amp; Source Code" />
-                                
+
                                 <HyperlinkButton
                                         NavigateUri="{Binding PrivacyPolicyUrl}"
                                         HorizontalAlignment="Left"

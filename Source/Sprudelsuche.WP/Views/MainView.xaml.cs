@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Sprudelsuche.WP.Common;
+using Sprudelsuche.WP.ViewModels;
 
 namespace Sprudelsuche.WP.Views
 {
