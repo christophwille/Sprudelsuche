@@ -59,14 +59,14 @@ namespace Sprudelsuche.Portable.Model
         {
             get
             {
-                return Street + ", " + City;
+                return String.Format("{0}, {1} {2}", Street, PostalCode, City);
             }
         }
 
         [XmlIgnore]
         public string PriceFormatted
         {
-            get { return Price.ToString(); }
+            get { return "€ " + Price.ToString(); }
         }
     }
 }

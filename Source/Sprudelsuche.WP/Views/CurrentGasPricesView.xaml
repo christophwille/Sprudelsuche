@@ -44,7 +44,8 @@
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,19">
                                     <TextBlock Text="{Binding Name}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
-                                    <TextBlock Text="{Binding PriceFormatted}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"/>
+                                    <TextBlock Text="{Binding PriceFormatted}" Style="{ThemeResource ListViewItemContentTextBlockStyle}"/>
+                                    <TextBlock Text="{Binding Address}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
