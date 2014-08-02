@@ -100,6 +100,8 @@
     <Compile Include="Services\IFavoritesRepository.cs" />
     <Compile Include="Services\IMessageService.cs" />
     <Compile Include="ViewModels\CurrentGasPricesViewModel.cs" />
+    <Compile Include="ViewModels\ICurrentGasPricesViewModelBindings.cs" />
+    <Compile Include="ViewModels\IMainViewModelBindings.cs" />
     <Compile Include="ViewModels\MainViewModel.About.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\CurrentGasPricesView.xaml.cs">

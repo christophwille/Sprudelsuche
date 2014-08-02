@@ -14,7 +14,7 @@ using Sprudelsuche.WP.Services;
 
 namespace Sprudelsuche.WP.ViewModels
 {
-    public class CurrentGasPricesViewModel : Screen
+    public class CurrentGasPricesViewModel : Screen, ICurrentGasPricesViewModelBindings
     {
         private readonly IMessageService _messageService;
         private readonly IFavoritesRepository _favoritesRepository;

@@ -19,7 +19,7 @@ using Sprudelsuche.WP.Services;
 
 namespace Sprudelsuche.WP.ViewModels
 {
-    public partial class MainViewModel : Screen, IStateEnabledViewModel
+    public partial class MainViewModel : Screen, IMainViewModelBindings, IStateEnabledViewModel
     {
         private const int MinimumSearchStringLength = 3;
 

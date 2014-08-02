@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprudelsuche.Portable.Model;
+using Sprudelsuche.WP.ViewModels;
 
 namespace Sprudelsuche.WP.DesignViewModels
 {
-    class CurrentGasPricesViewModelDT
+    public class CurrentGasPricesViewModelDT : ICurrentGasPricesViewModelBindings
     {
         public CurrentGasPricesViewModelDT()
         {
@@ -19,12 +20,16 @@ namespace Sprudelsuche.WP.DesignViewModels
             QueryResult.GasStationResults.Add(new GasStationResult()
             {
                 Name = "Fantasy Brand Gas Station",
-                Price = 1.28
+                Price = 1.28,
+                City = "Leoben",
+                PostalCode = "8700",
+                Street = "Some street 21"
             });
         }
 
         public FuelTypeEnum FuelType { get; set; }
         public string LocationName { get; set; }
         public GasQueryResult QueryResult { get; set; }
+        public bool Loading { get; set; }
     }
 }
