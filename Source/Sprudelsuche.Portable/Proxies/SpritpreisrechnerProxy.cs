@@ -6,7 +6,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Sprudelsuche.Portable;
 using Sprudelsuche.Portable.Model;
 using Sprudelsuche.Portable.Proxies.Model;
 
@@ -18,30 +17,27 @@ namespace Sprudelsuche.Portable.Proxies
 
         public async Task<GasQueryDownloadResult> DownloadAsync(GasQuery parameter)
         {
+            // Prepare POST data
             string postData = Uri.EscapeUriString(parameter.ToPostData());
-
             var ascii = new UTF8Encoding();
             byte[] bData = ascii.GetBytes(postData);
-
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
-            client.DefaultRequestHeaders.Referrer = new Uri("http://spritpreisrechner.at/ts/map.jsp");
-            // client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.126 Safari/533.4"));
-
             var content = new ByteArrayContent(bData);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
 
-            HttpResponseMessage response = null;
-            string json;
             List<RootObject> result = null;
 
             try
             {
-                response = await client.PostAsync(URL, content);
-                json = await response.Content.ReadAsStringAsync();
-                client.Dispose();
+                using (var client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
+                    client.DefaultRequestHeaders.Referrer = new Uri("http://spritpreisrechner.at/ts/map.jsp");
 
-                result = JsonConvert.DeserializeObject<List<RootObject>>(json);
+                    HttpResponseMessage response = await client.PostAsync(URL, content);
+                    string json = await response.Content.ReadAsStringAsync();
+
+                    result = JsonConvert.DeserializeObject<List<RootObject>>(json);
+                }
             }
             catch (Exception ex)
             {
