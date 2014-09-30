@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30626.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprudelsuche", "Sprudelsuche\Sprudelsuche.csproj", "{760A1DF3-9406-45EB-9186-F7E4E4DA2154}"
 EndProject
@@ -191,9 +191,9 @@ Global
 		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|ARM.ActiveCfg = Debug|ARM
 		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|ARM.Build.0 = Debug|ARM
 		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|ARM.Deploy.0 = Debug|ARM
-		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Mixed Platforms.Deploy.0 = Debug|x86
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Mixed Platforms.Deploy.0 = Debug|Any CPU
 		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Win32.ActiveCfg = Debug|x86
 		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Win32.Build.0 = Debug|x86
 		{516138CC-E662-46BD-ADA5-F3D636D0EC47}.Debug|Win32.Deploy.0 = Debug|x86
