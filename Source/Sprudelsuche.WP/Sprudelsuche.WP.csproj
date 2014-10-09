@@ -98,6 +98,7 @@
     <Compile Include="Models\Favorite.cs" />
     <Compile Include="Models\MainViewModelState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\WpaGeocodeService.cs" />
     <Compile Include="Services\DefaultFavoritesRepository.cs" />
     <Compile Include="Services\DefaultMessageService.cs" />
     <Compile Include="Services\IFavoritesRepository.cs" />
