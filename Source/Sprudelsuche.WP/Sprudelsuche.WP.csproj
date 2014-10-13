@@ -95,6 +95,7 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="DesignViewModels\CurrentGasPricesViewModelDT.cs" />
     <Compile Include="DesignViewModels\MainViewModelDT.cs" />
+    <Compile Include="MapServicesAuthentication.cs" />
     <Compile Include="Models\Favorite.cs" />
     <Compile Include="Models\MainViewModelState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

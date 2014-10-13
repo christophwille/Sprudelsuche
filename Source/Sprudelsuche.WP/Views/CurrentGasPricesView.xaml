@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
     x:Class="Sprudelsuche.WP.Views.CurrentGasPricesView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -50,6 +50,23 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Karte">
+                <DataTemplate>
+                    <Maps:MapControl
+                            MapServiceToken="{Binding MapAuthenticationToken}"
+                            x:Name="GasStationMapControl"
+                            Loaded="GasStationMapControl_Loaded">
+                        <!--<Maps:MapItemsControl ItemsSource="{Binding GasStationPins}">
+                            <Maps:MapItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Image}" Height="25"
+                                        Maps:MapControl.Location="{Binding Geopoint}" />
+                                </DataTemplate>
+                            </Maps:MapItemsControl.ItemTemplate>
+                        </Maps:MapItemsControl>-->
+                    </Maps:MapControl>
                 </DataTemplate>
             </HubSection>
         </Hub>

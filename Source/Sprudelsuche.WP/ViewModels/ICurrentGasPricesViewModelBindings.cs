@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls.Maps;
 using Sprudelsuche.Portable.Model;
 
 namespace Sprudelsuche.WP.ViewModels
@@ -14,5 +15,9 @@ namespace Sprudelsuche.WP.ViewModels
         string LocationName { get; set; }
         GasQueryResult QueryResult { get; set; }
         bool Loading { get; set; }
+
+
+        string MapAuthenticationToken { get; }
+        List<MapIcon> GasStationPins { get; set; } 
     }
 }
