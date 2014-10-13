@@ -6,10 +6,18 @@ in the Wiki to get an overview of the project before digging into the code.
 
 ## Features
 
+### Windows App
+
 * `Umgebungssuche` - Suche nach der günstigsten Tankstelle nahe der aktuellen Position
 * `Hintergrundupdates` - Gespeicherte Suchen werden automatisch stündlich aktualisiert (optional, siehe Einstellungen)
 * `Anheftbare Kacheln` - Regelmäßig genutzte Suchen können an Start angeheftet werden damit aktuelle Preise immer im Blick sind
 * `Sharing` - Suchergebnisse können an andere Apps weitergegeben werden (zB Mail)
+
+### Windows Phone 8.1 App
+
+* Suche
+* Favoriten
+* Anzeige der Resultate als Liste und auf Karte
 
 ## Installation
 Die Installation erfolgt über den Store.

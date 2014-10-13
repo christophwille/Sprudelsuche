@@ -15,7 +15,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <NuGetPackageImportStamp>2a6daea4</NuGetPackageImportStamp>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
   </PropertyGroup>
@@ -143,7 +143,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\de\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\CurrentGasPricesView.xaml">

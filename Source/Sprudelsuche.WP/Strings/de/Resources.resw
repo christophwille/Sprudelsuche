@@ -117,28 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Header.Text" xml:space="preserve">
-    <value>application name</value>
-  </data>
-  <data name="Hub.Header" xml:space="preserve">
-    <value>application name</value>
-  </data>
-  <data name="HubSection1" xml:space="preserve">
-    <value>SECTION 1</value>
-  </data>
-  <data name="HubSection2" xml:space="preserve">
-    <value>SECTION 2</value>
-  </data>
-  <data name="HubSection3" xml:space="preserve">
-    <value>SECTION 3</value>
-  </data>
-  <data name="HubSection4" xml:space="preserve">
-    <value>SECTION 4</value>
-  </data>
-  <data name="HubSection5" xml:space="preserve">
-    <value>SECTION 5</value>
-  </data>
-  <data name="NavigationFailedExceptionMessage" xml:space="preserve">
-    <value>Navigation failed.</value>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>Sprudelsuche</value>
   </data>
 </root>
