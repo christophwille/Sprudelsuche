@@ -128,15 +128,24 @@ namespace Sprudelsuche.WP.ViewModels
             var newPins = new List<MapIcon>();
             foreach (var g in gasStations)
             {
-                newPins.Add(new MapIcon()
+                try
                 {
-                    Title = g.Name,
-                    Location = new Geopoint(new BasicGeoposition()
-                                    {
-                                        Latitude = g.Latitude,
-                                        Longitude = g.Longitude
-                                    })
-                });
+                    var pin = new MapIcon()
+                    {
+                        Title = g.Name,
+                        Location = new Geopoint(new BasicGeoposition()
+                        {
+                            Latitude = g.Latitude,
+                            Longitude = g.Longitude
+                        })
+                    };
+
+                    newPins.Add(pin);
+                }
+                catch (Exception ex)
+                {
+                   Debug.WriteLine("Invalid geocoordinate for " + g.Name);
+                }
             }
 
             GasStationPins = newPins;

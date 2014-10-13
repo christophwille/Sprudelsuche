@@ -51,10 +51,10 @@ namespace Sprudelsuche.WP.Views
         public void ResetMapElements()
         {
             var vm = ViewModel;
-            _gasstationMapControl.MapElements.Clear();
 
             if (null == vm || null == _gasstationMapControl) return;
 
+            _gasstationMapControl.MapElements.Clear();
             foreach (var element in vm.GasStationPins)
             {
                 _gasstationMapControl.MapElements.Add(element);

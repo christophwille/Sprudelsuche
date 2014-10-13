@@ -126,7 +126,7 @@ namespace Sprudelsuche.WP.Common
                 // Pass the navigation parameter and preserved page state to the page, using
                 // the same strategy for loading suspended state and recreating pages discarded
                 // from cache
-                if (this.LoadState != null)
+                if (this.LoadState != null && frameState.ContainsKey(this._pageKey))
                 {
                     this.LoadState(this, new LoadStateEventArgs(e.Parameter, (Dictionary<String, Object>)frameState[this._pageKey]));
                 }
