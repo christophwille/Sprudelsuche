@@ -86,6 +86,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\BooleanNegationConverter.cs" />
     <Compile Include="Common\IStateEnabledViewModel.cs" />
     <Compile Include="Common\OpenMenuFlyoutAction.cs" />
     <Compile Include="Common\RelayCommand.cs" />

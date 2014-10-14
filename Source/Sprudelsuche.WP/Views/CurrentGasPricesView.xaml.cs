@@ -44,22 +44,30 @@ namespace Sprudelsuche.WP.Views
                 Latitude = vm.Latitude,
                 Longitude = vm.Longitude
             }), 14.0f);
+
+            if (_resetDeferredToLoadEvent) ResetMapElements();
         }
 
         // http://msdn.microsoft.com/en-us/library/dn792121.aspx
         // http://stackoverflow.com/questions/23701846/how-to-add-pushpin-to-windows-phone-8-1-mapcontrol/24123386#24123386
         public void ResetMapElements()
         {
-            var vm = ViewModel;
+            var pins = ViewModel.GasStationPins;
 
-            if (null == vm || null == _gasstationMapControl) return;
+            if (null == _gasstationMapControl)
+            {
+                if (pins.Any()) _resetDeferredToLoadEvent = true;
+                return;
+            }
 
             _gasstationMapControl.MapElements.Clear();
-            foreach (var element in vm.GasStationPins)
+            foreach (var element in pins)
             {
                 _gasstationMapControl.MapElements.Add(element);
             }
         }
+
+        private bool _resetDeferredToLoadEvent;
 
         public void Handle(string message)
         {

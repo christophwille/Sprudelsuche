@@ -12,7 +12,11 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:common="using:Sprudelsuche.WP.Common"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    
+    <Page.Resources>
+        <common:BooleanNegationConverter x:Name="InvertBoolean" />
+    </Page.Resources>
+    
     <i:Interaction.Behaviors>
         <common:ProgressBehavior IsVisible="{Binding Loading}"
                                 Text="Lade Preise"/>
@@ -21,6 +25,7 @@
     <Page.BottomAppBar>
 		<CommandBar>
 			<AppBarButton 
+                IsEnabled="{Binding Loading, Converter={StaticResource InvertBoolean}}"
                 micro:Message.Attach="[Event Click] = [Action RefreshPrices()]"
                 Icon="ReShare" Label="neu laden"/>
 			<AppBarButton 
