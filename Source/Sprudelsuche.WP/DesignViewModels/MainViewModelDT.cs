@@ -37,12 +37,20 @@ namespace Sprudelsuche.WP.DesignViewModels
                     FuelType = FuelTypeEnum.Diesel,
                 }
             });
+
+            SearchByLocation = true;
+            DieselSelected = true;
         }
 
         public bool Loading { get; set; }
         public string SearchText { get; set; }
+
+        public bool SearchByLocation { get; set; }
+        public bool SearchByGps { get; set; }
+
         public bool DieselSelected { get; set; }
         public bool SuperSelected { get; set; }
+
         public ObservableCollection<GeocodeResult> Results { get; set; }
         public ObservableCollection<Favorite> Favorites { get; set; }
         public ICommand RemoveFavoriteCommand { get; set; }

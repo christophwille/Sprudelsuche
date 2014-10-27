@@ -27,18 +27,25 @@ namespace Sprudelsuche.WP.ViewModels
         public bool Loading { get; set; }
 
         private readonly INavigationService _navigationService;
+        private readonly ILocationService _locationService;
         private readonly IMessageService _messageService;
         private readonly IFavoritesRepository _favoritesRepository;
 
-        public MainViewModel(INavigationService navigationService, IMessageService messageService, IFavoritesRepository favoritesRepository)
+        public MainViewModel(INavigationService navigationService, 
+            ILocationService locationService,
+            IMessageService messageService, 
+            IFavoritesRepository favoritesRepository)
         {
             _navigationService = navigationService;
+            _locationService = locationService;
             _messageService = messageService;
             _favoritesRepository = favoritesRepository;
 
             CreateGeocodeProxy = () => new NominatimProxy();
 
             InitializeAbout();
+
+            SearchByLocation = true;
 
             RemoveFavoriteCommand = new RelayCommand<Favorite>(async (f) => await RemoveFavorite(f));
         }
@@ -71,6 +78,9 @@ namespace Sprudelsuche.WP.ViewModels
             set { SelectFuelType(FuelTypeEnum.Super); }
         }
 
+        public bool SearchByLocation { get; set; }
+        public bool SearchByGps { get; set; }
+
         private void SelectFuelType(FuelTypeEnum ft)
         {
             _selectedFuelType = ft;
@@ -89,10 +99,49 @@ namespace Sprudelsuche.WP.ViewModels
 
         public async void Search()
         {
-            await SearchForMatchesAsync(SearchText);
+            if (SearchByLocation)
+            {
+                await SearchForMatchesAsync(SearchText);
+            }
+            else
+            {
+                await GpsSearchAutoRedirectOnSuccess();
+            }
         }
 
-        public bool CanSearch { get { return IsSearchTextValid(SearchText); } }
+        public bool CanSearch { get { return SearchByGps || IsSearchTextValid(SearchText); } }
+
+
+        private async Task GpsSearchAutoRedirectOnSuccess()
+        {
+            try
+            {
+                Loading = true;
+                var posResult = await _locationService.GetCurrentPositionAsync();
+
+                if (posResult.Succeeded)
+                {
+                    string locTitle = String.Format("GPS lat({0:N}), lon({1:N})", 
+                        posResult.Coordinate.Latitude,
+                        posResult.Coordinate.Longitude);
+
+                    _navigationService.UriFor<CurrentGasPricesViewModel>()
+                        .WithParam(vm => vm.FuelType, this._selectedFuelType)
+                        .WithParam(vm => vm.LocationName, locTitle)
+                        .WithParam(vm => vm.Longitude, posResult.Coordinate.Longitude)
+                        .WithParam(vm => vm.Latitude, posResult.Coordinate.Latitude)
+                        .Navigate();
+                }
+                else
+                {
+                    await _messageService.ShowAsync(posResult.ErrorMessage);
+                }
+            }
+            finally
+            {
+                Loading = false;
+            }
+        }
 
         private async Task SearchForMatchesAsync(string searchString)
         {
@@ -173,6 +222,11 @@ namespace Sprudelsuche.WP.ViewModels
 
                 this.SearchText = state.SearchText;
                 SelectFuelType(state.FuelType);
+
+                this.SearchByLocation = state.SearchByLocation;
+                this.SearchByGps = state.SearchByGps;
+                if (!SearchByLocation && !SearchByGps) SearchByLocation = true; // Fallback for invalid state
+
                 if (null != state.Results) this.Results = new ObservableCollection<GeocodeResult>(state.Results);
             }
         }
@@ -183,6 +237,8 @@ namespace Sprudelsuche.WP.ViewModels
             {
                 SearchText = this.SearchText,
                 FuelType = this._selectedFuelType,
+                SearchByLocation = this.SearchByLocation,
+                SearchByGps = this.SearchByGps
             };
             if (null != Results) state.Results = Results.ToList();
 

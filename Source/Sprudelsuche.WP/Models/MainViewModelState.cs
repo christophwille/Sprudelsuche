@@ -12,5 +12,8 @@ namespace Sprudelsuche.WP.Models
         public string SearchText { get; set; }
         public FuelTypeEnum FuelType { get; set; }
         public List<GeocodeResult> Results { get; set; }
+
+        public bool SearchByLocation { get; set; }
+        public bool SearchByGps { get; set; }
     }
 }

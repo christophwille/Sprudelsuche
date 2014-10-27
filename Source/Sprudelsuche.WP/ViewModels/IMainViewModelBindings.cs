@@ -15,8 +15,13 @@ namespace Sprudelsuche.WP.ViewModels
     {
         bool Loading { get; set; }
         string SearchText { get; set; }
+
+        bool SearchByLocation { get; set; }
+        bool SearchByGps { get; set; }
+
         bool DieselSelected { get; set; }
         bool SuperSelected { get; set; }
+
         ObservableCollection<GeocodeResult> Results { get; set; }
         ObservableCollection<Favorite> Favorites { get; set; }
         ICommand RemoveFavoriteCommand { get; }

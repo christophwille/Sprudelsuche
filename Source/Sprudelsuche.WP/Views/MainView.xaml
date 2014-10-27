@@ -18,6 +18,10 @@
         <common:ProgressBehavior IsVisible="{Binding Loading}"
                                 Text="Suche Ort"/>
     </i:Interaction.Behaviors>
+    
+    <Page.Resources>
+        <common:BooleanToVisibilityConverter x:Name="visConv" />
+    </Page.Resources>
 
     <Grid x:Name="RootGrid">
         <Hub Header="spritpreise österreich">
@@ -26,29 +30,37 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0">
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <RadioButton GroupName="SearchType" Content="Ort" IsChecked="{Binding SearchByLocation, Mode=TwoWay}" />
+                            <RadioButton GroupName="SearchType" Content="GPS" IsChecked="{Binding SearchByGps, Mode=TwoWay}" />
+                        </StackPanel>
+                        
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-
+                            
                             <TextBox Grid.Column="0" 
-                                     Header="Ort" 
+                                     Visibility="{Binding Path=SearchByLocation, Converter={StaticResource visConv}}"
                                      PlaceholderText="min 3 Buchstaben" 
                                      Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      />
 
-                            <Button Margin="10,0,0,0" Grid.Column="1" VerticalAlignment="Bottom"
+                            <Button Margin="10,0,0,0" Grid.Column="1" 
+                                    VerticalAlignment="Bottom"
                                     Content="Suche"
                                     caliburn:Message.Attach="[Event Click] = [Action Search()]" />
                         </Grid>
 
                         <ListView 
-                            Grid.Row="1"
+                            Grid.Row="2"
                             ItemsSource="{Binding Results}"
                             SelectionMode="None" 
                             IsSwipeEnabled="False"
@@ -64,9 +76,9 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
-                        <StackPanel Grid.Row="2" Orientation="Horizontal">
-                            <RadioButton Content="Diesel" IsChecked="{Binding DieselSelected, Mode=TwoWay}" />
-                            <RadioButton Content="Super"  IsChecked="{Binding SuperSelected, Mode=TwoWay}" />
+                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <RadioButton GroupName="FuelType" Content="Diesel" IsChecked="{Binding DieselSelected, Mode=TwoWay}" />
+                            <RadioButton GroupName="FuelType" Content="Super"  IsChecked="{Binding SuperSelected, Mode=TwoWay}" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

@@ -32,6 +32,7 @@ namespace Sprudelsuche.WP
             container.RegisterInstance(typeof(IFavoritesRepository), null, new DefaultFavoritesRepository());
 
             container.RegisterPerRequest(typeof(IMessageService), null, typeof(DefaultMessageService));
+            container.RegisterPerRequest(typeof(ILocationService), null, typeof(DefaultLocationService));
 
             container
                 .PerRequest<MainViewModel>()

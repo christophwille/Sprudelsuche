@@ -87,6 +87,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\IStateEnabledViewModel.cs" />
     <Compile Include="Common\OpenMenuFlyoutAction.cs" />
     <Compile Include="Common\RelayCommand.cs" />
@@ -98,8 +99,11 @@
     <Compile Include="DesignViewModels\MainViewModelDT.cs" />
     <Compile Include="MapServicesAuthentication.cs" />
     <Compile Include="Models\Favorite.cs" />
+    <Compile Include="Models\LocationResult.cs" />
     <Compile Include="Models\MainViewModelState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ILocationService.cs" />
+    <Compile Include="Services\DefaultLocationService.cs" />
     <Compile Include="Services\WpaGeocodeService.cs" />
     <Compile Include="Services\DefaultFavoritesRepository.cs" />
     <Compile Include="Services\DefaultMessageService.cs" />
