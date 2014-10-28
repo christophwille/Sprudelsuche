@@ -1,4 +1,5 @@
-﻿using Windows.ApplicationModel;
+﻿using System.Diagnostics;
+using Windows.ApplicationModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Caliburn.Micro;
@@ -99,6 +100,10 @@ namespace Sprudelsuche.WP
             {
                 _navigationService.SuspendState();
                 await SuspensionManager.SaveAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
             }
             finally
             {
