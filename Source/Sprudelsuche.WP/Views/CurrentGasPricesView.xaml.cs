@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -37,15 +38,24 @@ namespace Sprudelsuche.WP.Views
         {
             _gasstationMapControl = ((MapControl)sender);
 
-            var vm = ViewModel;
-
-            await _gasstationMapControl.TrySetViewAsync(new Geopoint(new BasicGeoposition()
+            try
             {
-                Latitude = vm.Latitude,
-                Longitude = vm.Longitude
-            }), 14.0f);
+                var vm = ViewModel;
 
-            if (_resetDeferredToLoadEvent) ResetMapElements();
+                var center = new Geopoint(new BasicGeoposition()
+                {
+                    Latitude = vm.Latitude,
+                    Longitude = vm.Longitude
+                });
+
+                await _gasstationMapControl.TrySetViewAsync(center, 14.0f);
+
+                if (_resetDeferredToLoadEvent) ResetMapElements();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
         }
 
         // http://msdn.microsoft.com/en-us/library/dn792121.aspx
